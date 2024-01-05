@@ -1,0 +1,34 @@
+{
+    "name": "InteractableInputActions",
+    "maps": [
+        {
+            "name": "InteractableZone",
+            "id": "77feae58-24d2-4be8-8987-6d8bb74be414",
+            "actions": [
+                {
+                    "name": "Press E",
+                    "type": "Button",
+                    "id": "fa543229-ed49-4c5b-a02f-45469325e29d",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "Press(behavior=2)",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "32d4095c-ed5c-4729-8072-5dac10d6759c",
+                    "path": "<Keyboard>/e",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Press E",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        }
+    ],
+    "controlSchemes": []
+}

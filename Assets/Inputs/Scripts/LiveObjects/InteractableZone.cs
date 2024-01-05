@@ -49,15 +49,14 @@ namespace Game.Scripts.LiveObjects
 
         private static int _currentZoneID = 0;
         public static int CurrentZoneID
-        { 
-            get 
-            { 
-               return _currentZoneID; 
+        {
+            get
+            {
+                return _currentZoneID;
             }
             set
             {
-                _currentZoneID = value; 
-                         
+                _currentZoneID = value;
             }
         }
 
@@ -66,10 +65,71 @@ namespace Game.Scripts.LiveObjects
         public static event Action<int> onHoldStarted;
         public static event Action<int> onHoldEnded;
 
+        private InteractableInputActions _input;
+
         private void OnEnable()
         {
             InteractableZone.onZoneInteractionComplete += SetMarker;
+        }
 
+        private void Start()
+        {
+            _input = new InteractableInputActions();
+            _input.InteractableZone.Enable();
+            _input.InteractableZone.PressE.performed += PressE_performed;
+            _input.InteractableZone.PressE.started += PressE_started;
+            _input.InteractableZone.PressE.canceled += PressE_canceled;
+        }
+
+        private void PressE_canceled(UnityEngine.InputSystem.InputAction.CallbackContext context)
+        {
+            if (_inZone == true)
+            {
+                _inHoldState = false;
+                onHoldEnded?.Invoke(_zoneID);
+            }
+        }
+
+        private void PressE_performed(UnityEngine.InputSystem.InputAction.CallbackContext context)
+        {
+            if (_inZone == true)
+            {
+                switch (_zoneType)
+                {
+                    case ZoneType.Collectable:
+                        if (_itemsCollected == false)
+                        {
+                            CollectItems();
+                            _itemsCollected = true;
+                            UIManager.Instance.DisplayInteractableZoneMessage(false);
+                        }
+                        break;
+
+                    case ZoneType.Action:
+                        if (_actionPerformed == false)
+                        {
+                            PerformAction();
+                            _actionPerformed = true;
+                            UIManager.Instance.DisplayInteractableZoneMessage(false);
+                        }
+                        break;
+                }
+            }
+        }
+
+        private void PressE_started(UnityEngine.InputSystem.InputAction.CallbackContext context)
+        {
+            if (_inZone == true)
+            {
+                _inHoldState = true;
+
+                switch (_zoneType)
+                {
+                    case ZoneType.HoldAction:
+                        PerformHoldAction();
+                        break;
+                }
+            }
         }
 
         private void OnTriggerEnter(Collider other)
@@ -122,7 +182,7 @@ namespace Game.Scripts.LiveObjects
 
         private void Update()
         {
-            if (_inZone == true)
+            /*if (_inZone == true)
             {
 
                 if (Input.GetKeyDown(_zoneKeyInput) && _keyState != KeyState.PressHold)
@@ -153,13 +213,13 @@ namespace Game.Scripts.LiveObjects
                 {
                     _inHoldState = true;
 
-                   
+
 
                     switch (_zoneType)
-                    {                      
+                    {
                         case ZoneType.HoldAction:
                             PerformHoldAction();
-                            break;           
+                            break;
                     }
                 }
 
@@ -169,10 +229,10 @@ namespace Game.Scripts.LiveObjects
                     onHoldEnded?.Invoke(_zoneID);
                 }
 
-               
-            }
+            
+            }*/
         }
-       
+
         private void CollectItems()
         {
             foreach (var item in _zoneItems)
@@ -252,8 +312,8 @@ namespace Game.Scripts.LiveObjects
         private void OnDisable()
         {
             InteractableZone.onZoneInteractionComplete -= SetMarker;
-        }       
-        
+        }
+
     }
 }
 
