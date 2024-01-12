@@ -23,15 +23,51 @@ namespace Game.Scripts.LiveObjects
         public static event Action onHackComplete;
         public static event Action onHackEnded;
 
+        private PlayerInputActions _input;
+
         private void OnEnable()
         {
             InteractableZone.onHoldStarted += InteractableZone_onHoldStarted;
             InteractableZone.onHoldEnded += InteractableZone_onHoldEnded;
         }
+        private void Start()
+        {
+            _input = new PlayerInputActions();
+            _input.Laptop.Enable();
+            _input.Laptop.Activate.performed += Activate_performed;
+            _input.Laptop.Escape.performed += Escape_performed;
+        }
+
+        private void Escape_performed(UnityEngine.InputSystem.InputAction.CallbackContext context)
+        {
+            if (_hacked)
+            {
+                _hacked = false;
+                onHackEnded?.Invoke();
+                ResetCameras();
+            }
+        }
+
+        private void Activate_performed(UnityEngine.InputSystem.InputAction.CallbackContext context)
+        {
+            if (_hacked)
+            {
+                var previous = _activeCamera;
+                _activeCamera++;
+
+
+                if (_activeCamera >= _cameras.Length)
+                    _activeCamera = 0;
+
+
+                _cameras[_activeCamera].Priority = 11;
+                _cameras[previous].Priority = 9;
+            }
+        }
 
         private void Update()
         {
-            if (_hacked == true)
+            /*if (_hacked == true)
             {
                 if (Input.GetKeyDown(KeyCode.E))
                 {
@@ -53,7 +89,7 @@ namespace Game.Scripts.LiveObjects
                     onHackEnded?.Invoke();
                     ResetCameras();
                 }
-            }
+            }*/
         }
 
         void ResetCameras()
@@ -88,7 +124,7 @@ namespace Game.Scripts.LiveObjects
             }
         }
 
-        
+
         IEnumerator HackingRoutine()
         {
             while (_progressBar.value < 1)
@@ -107,7 +143,7 @@ namespace Game.Scripts.LiveObjects
             //enable Vcam1
             _cameras[0].Priority = 11;
         }
-        
+
         private void OnDisable()
         {
             InteractableZone.onHoldStarted -= InteractableZone_onHoldStarted;

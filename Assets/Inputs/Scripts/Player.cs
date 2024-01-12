@@ -49,6 +49,7 @@ namespace Game.Scripts.Player
                 Debug.Log("Failed to connect the Animator");
         }
 
+
         public void Movement(Vector3 movement)
         {
             if (_canMove == true)

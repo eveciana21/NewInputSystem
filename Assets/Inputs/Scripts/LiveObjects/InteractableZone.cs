@@ -65,7 +65,7 @@ namespace Game.Scripts.LiveObjects
         public static event Action<int> onHoldStarted;
         public static event Action<int> onHoldEnded;
 
-        private InteractableInputActions _input;
+        private PlayerInputActions _input;
 
         private void OnEnable()
         {
@@ -74,7 +74,7 @@ namespace Game.Scripts.LiveObjects
 
         private void Start()
         {
-            _input = new InteractableInputActions();
+            _input = new PlayerInputActions();
             _input.InteractableZone.Enable();
             _input.InteractableZone.PressE.performed += PressE_performed;
             _input.InteractableZone.PressE.started += PressE_started;
