@@ -109,7 +109,6 @@ namespace Game.Scripts.LiveObjects
                 _holdPunch = true;
                 Debug.Log("Hold Punch Ready");
             }
-
         }
 
         private void PressE_canceled(UnityEngine.InputSystem.InputAction.CallbackContext context)
