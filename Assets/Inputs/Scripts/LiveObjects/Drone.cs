@@ -136,7 +136,8 @@ namespace Game.Scripts.LiveObjects
             var lift = _playerInput.Drone.UpDown.ReadValue<float>();
             _rigidbody.AddForce(lift * transform.up * _liftSpeed, ForceMode.Acceleration);
 
-            /* if (Input.GetKey(KeyCode.Space))
+
+            /*if (Input.GetKey(KeyCode.Space))
              {
                  _rigidbody.AddForce(transform.up * _speed, ForceMode.Acceleration);
              }
@@ -150,10 +151,6 @@ namespace Game.Scripts.LiveObjects
 
         private void CalculateTilt()
         {
-            /*var tiltAngle = _droneInput.Drone.Movement.ReadValue<Vector3>();
-            Quaternion target = Quaternion.Euler(tiltAngle * _strafeSpeed);
-            transform.rotation = Quaternion.Slerp(transform.localRotation, target, Time.deltaTime * 5f);*/
-
             var tilt = _playerInput.Drone.Movement.ReadValue<Vector3>();
 
             switch (tilt)
@@ -174,9 +171,9 @@ namespace Game.Scripts.LiveObjects
                 default:
                     transform.rotation = Quaternion.Euler(0, transform.localRotation.eulerAngles.y, 0);
                     break;
-
             }
-            /* if (Input.GetKey(KeyCode.A))
+
+            /*if (Input.GetKey(KeyCode.A))
                  transform.rotation = Quaternion.Euler(00, transform.localRotation.eulerAngles.y, 30);
              else if (Input.GetKey(KeyCode.D))
                  transform.rotation = Quaternion.Euler(0, transform.localRotation.eulerAngles.y, -30);

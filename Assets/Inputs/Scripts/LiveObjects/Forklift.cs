@@ -23,15 +23,34 @@ namespace Game.Scripts.LiveObjects
         public static event Action onDriveModeEntered;
         public static event Action onDriveModeExited;
 
+        private PlayerInputActions _input;
+
         private void OnEnable()
         {
             InteractableZone.onZoneInteractionComplete += EnterDriveMode;
         }
+        private void Start()
+        {
+            _input = new PlayerInputActions();
+            _input.Forklift.Enable();
+            _input.Forklift.Escape.performed += Escape_performed;
+        }
+
+
+
+        private void Escape_performed(UnityEngine.InputSystem.InputAction.CallbackContext context)
+        {
+            if (_inDriveMode)
+            {
+                ExitDriveMode();
+            }
+        }
 
         private void EnterDriveMode(InteractableZone zone)
         {
-            if (_inDriveMode !=true && zone.GetZoneID() == 5) //Enter ForkLift
+            if (_inDriveMode != true && zone.GetZoneID() == 5) //Enter ForkLift
             {
+                _input.Player.Disable();
                 _inDriveMode = true;
                 _forkliftCam.Priority = 11;
                 onDriveModeEntered?.Invoke();
@@ -42,11 +61,11 @@ namespace Game.Scripts.LiveObjects
 
         private void ExitDriveMode()
         {
+            _input.Player.Enable();
             _inDriveMode = false;
-            _forkliftCam.Priority = 9;            
+            _forkliftCam.Priority = 9;
             _driverModel.SetActive(false);
             onDriveModeExited?.Invoke();
-            
         }
 
         private void Update()
@@ -55,15 +74,27 @@ namespace Game.Scripts.LiveObjects
             {
                 LiftControls();
                 CalcutateMovement();
-                if (Input.GetKeyDown(KeyCode.Escape))
-                    ExitDriveMode();
+                //if (Input.GetKeyDown(KeyCode.Escape))
+                //ExitDriveMode();
             }
 
         }
 
         private void CalcutateMovement()
         {
-            float h = Input.GetAxisRaw("Horizontal");
+            var move = _input.Forklift.Movement.ReadValue<Vector2>();
+
+            transform.Translate(new Vector3(move.x, 0, move.y) * Time.deltaTime * _speed);
+
+            if (Mathf.Abs(move.y) > 0)
+            {
+                var tempRot = transform.rotation.eulerAngles;
+                tempRot.y += move.x * _speed / 2;
+                transform.rotation = Quaternion.Euler(tempRot);
+            }
+
+
+            /*float h = Input.GetAxisRaw("Horizontal");
             float v = Input.GetAxisRaw("Vertical");
             var direction = new Vector3(0, 0, v);
             var velocity = direction * _speed;
@@ -75,15 +106,44 @@ namespace Game.Scripts.LiveObjects
                 var tempRot = transform.rotation.eulerAngles;
                 tempRot.y += h * _speed / 2;
                 transform.rotation = Quaternion.Euler(tempRot);
-            }
+            }*/
         }
 
         private void LiftControls()
         {
-            if (Input.GetKey(KeyCode.R))
-                LiftUpRoutine();
-            else if (Input.GetKey(KeyCode.T))
-                LiftDownRoutine();
+            var lift = _input.Forklift.LiftLower.ReadValue<float>();
+
+            switch (lift)
+            {
+                case -1:
+                    if (_lift.transform.localPosition.y > _liftLowerLimit.y)
+                    {
+                        Vector3 tempPos = _lift.transform.localPosition;
+                        tempPos.y -= Time.deltaTime * _liftSpeed;
+                        _lift.transform.localPosition = new Vector3(tempPos.x, tempPos.y, tempPos.z);
+                    }
+                    else if (_lift.transform.localPosition.y <= _liftUpperLimit.y)
+                    {
+                        _lift.transform.localPosition = _liftLowerLimit;
+                    }
+                    break;
+
+                case 1:
+                    if (_lift.transform.localPosition.y < _liftUpperLimit.y)
+                    {
+                        Vector3 tempPos = _lift.transform.localPosition;
+                        tempPos.y += Time.deltaTime * _liftSpeed;
+                        _lift.transform.localPosition = new Vector3(tempPos.x, tempPos.y, tempPos.z);
+                    }
+                    else if (_lift.transform.localPosition.y >= _liftUpperLimit.y)
+                    {
+                        _lift.transform.localPosition = _liftUpperLimit;
+                    }
+                    break;
+
+                    //LiftUpRoutine();
+                    //LiftDownRoutine();
+            }
         }
 
         private void LiftUpRoutine()
