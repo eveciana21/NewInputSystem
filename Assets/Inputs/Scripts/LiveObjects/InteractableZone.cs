@@ -44,6 +44,9 @@ namespace Game.Scripts.LiveObjects
         private KeyState _keyState;
         [SerializeField]
         private GameObject _marker;
+        [SerializeField]
+        private Crate _crate;
+        private bool _holdPunch;
 
         private bool _inHoldState = false;
 
@@ -79,14 +82,45 @@ namespace Game.Scripts.LiveObjects
             _input.InteractableZone.PressE.performed += PressE_performed;
             _input.InteractableZone.PressE.started += PressE_started;
             _input.InteractableZone.PressE.canceled += PressE_canceled;
+            _input.InteractableZone.HoldPunch.performed += HoldPunch_performed;
+            _input.InteractableZone.HoldPunch.canceled += HoldPunch_canceled;
+        }
+
+        private void HoldPunch_canceled(UnityEngine.InputSystem.InputAction.CallbackContext obj)
+        {
+            if (_inZone == true && _zoneID == 6)
+            {
+                if (_holdPunch)
+                {
+                    for (int i = 0; i < 3; i++)
+                    {
+                        _crate.BreakPart();
+                    }
+                    Debug.Log("Hold Punch Performed");
+                    _holdPunch = false;
+                }
+            }
+        }
+
+        private void HoldPunch_performed(UnityEngine.InputSystem.InputAction.CallbackContext context)
+        {
+            if (_inZone == true && _zoneID == 6)
+            {
+                _holdPunch = true;
+                Debug.Log("Hold Punch Ready");
+            }
+
         }
 
         private void PressE_canceled(UnityEngine.InputSystem.InputAction.CallbackContext context)
         {
             if (_inZone == true)
             {
-                _inHoldState = false;
-                onHoldEnded?.Invoke(_zoneID);
+                if (_keyState == KeyState.PressHold)
+                {
+                    _inHoldState = false;
+                    onHoldEnded?.Invoke(_zoneID);
+                }
             }
         }
 
@@ -94,25 +128,28 @@ namespace Game.Scripts.LiveObjects
         {
             if (_inZone == true)
             {
-                switch (_zoneType)
+                if (_keyState != KeyState.PressHold)
                 {
-                    case ZoneType.Collectable:
-                        if (_itemsCollected == false)
-                        {
-                            CollectItems();
-                            _itemsCollected = true;
-                            UIManager.Instance.DisplayInteractableZoneMessage(false);
-                        }
-                        break;
+                    switch (_zoneType)
+                    {
+                        case ZoneType.Collectable:
+                            if (_itemsCollected == false)
+                            {
+                                CollectItems();
+                                _itemsCollected = true;
+                                UIManager.Instance.DisplayInteractableZoneMessage(false);
+                            }
+                            break;
 
-                    case ZoneType.Action:
-                        if (_actionPerformed == false)
-                        {
-                            PerformAction();
-                            _actionPerformed = true;
-                            UIManager.Instance.DisplayInteractableZoneMessage(false);
-                        }
-                        break;
+                        case ZoneType.Action:
+                            if (_actionPerformed == false)
+                            {
+                                PerformAction();
+                                _actionPerformed = true;
+                                UIManager.Instance.DisplayInteractableZoneMessage(false);
+                            }
+                            break;
+                    }
                 }
             }
         }
@@ -121,13 +158,16 @@ namespace Game.Scripts.LiveObjects
         {
             if (_inZone == true)
             {
-                _inHoldState = true;
-
-                switch (_zoneType)
+                if (_keyState == KeyState.PressHold && _inHoldState == false)
                 {
-                    case ZoneType.HoldAction:
-                        PerformHoldAction();
-                        break;
+                    _inHoldState = true;
+
+                    switch (_zoneType)
+                    {
+                        case ZoneType.HoldAction:
+                            PerformHoldAction();
+                            break;
+                    }
                 }
             }
         }
@@ -184,7 +224,6 @@ namespace Game.Scripts.LiveObjects
         {
             /*if (_inZone == true)
             {
-
                 if (Input.GetKeyDown(_zoneKeyInput) && _keyState != KeyState.PressHold)
                 {
                     //press
@@ -213,8 +252,6 @@ namespace Game.Scripts.LiveObjects
                 {
                     _inHoldState = true;
 
-
-
                     switch (_zoneType)
                     {
                         case ZoneType.HoldAction:
@@ -227,9 +264,7 @@ namespace Game.Scripts.LiveObjects
                 {
                     _inHoldState = false;
                     onHoldEnded?.Invoke(_zoneID);
-                }
-
-            
+                }         
             }*/
         }
 

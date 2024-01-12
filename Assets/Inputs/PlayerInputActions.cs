@@ -279,6 +279,61 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
                     ""isPartOfComposite"": true
                 },
                 {
+                    ""name"": ""3D Vector"",
+                    ""id"": ""3b7e9fbd-5773-4c86-b9bc-d1eba75fa9c4"",
+                    ""path"": ""3DVector(mode=1)"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Movement"",
+                    ""isComposite"": true,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""left"",
+                    ""id"": ""e4600322-44ee-4dc7-b75a-4475625ed23b"",
+                    ""path"": ""<Gamepad>/leftStick/left"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Movement"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""right"",
+                    ""id"": ""4d829936-2f1c-4713-933e-8e061389312f"",
+                    ""path"": ""<Gamepad>/leftStick/right"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Movement"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""forward"",
+                    ""id"": ""21e0b696-7c84-4310-81f9-9fc5b0614a59"",
+                    ""path"": ""<Gamepad>/leftStick/up"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Movement"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""backward"",
+                    ""id"": ""fc6935b4-f157-4907-80b2-079f95698ec9"",
+                    ""path"": ""<Gamepad>/leftStick/down"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Movement"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
                     ""name"": ""1D Axis"",
                     ""id"": ""0b25e3dc-8242-4afe-b493-85d295739185"",
                     ""path"": ""1DAxis"",
@@ -304,6 +359,39 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
                     ""name"": ""positive"",
                     ""id"": ""87ececef-ca2c-43ee-a4b7-8951d7067e66"",
                     ""path"": ""<Keyboard>/e"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Rotation"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""1D Axis"",
+                    ""id"": ""d39747e5-b6ce-4a18-823e-3d7568641479"",
+                    ""path"": ""1DAxis"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Rotation"",
+                    ""isComposite"": true,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""negative"",
+                    ""id"": ""34f836b2-a182-4b82-886a-20520150ab1e"",
+                    ""path"": ""<Gamepad>/rightStick/left"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Rotation"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""positive"",
+                    ""id"": ""1283b970-aa2c-440b-a7e1-9fa0333b50c4"",
+                    ""path"": ""<Gamepad>/rightStick/right"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
@@ -345,9 +433,53 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
                     ""isPartOfComposite"": true
                 },
                 {
+                    ""name"": ""1D Axis"",
+                    ""id"": ""0ce1662b-cccd-44ae-bd48-d00b9446442c"",
+                    ""path"": ""1DAxis"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""UpDown"",
+                    ""isComposite"": true,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""negative"",
+                    ""id"": ""3b7110b7-b387-43e3-bd45-abc259655d9b"",
+                    ""path"": ""<Gamepad>/leftTrigger"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""UpDown"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""positive"",
+                    ""id"": ""3b0e6e7d-1087-4f01-876b-c63d41c03c80"",
+                    ""path"": ""<Gamepad>/rightTrigger"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""UpDown"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
                     ""name"": """",
                     ""id"": ""59caa1c2-db93-4d89-bd32-e69a5adc2f4c"",
                     ""path"": ""<Keyboard>/escape"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Escape"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""420e309c-70e1-473e-8161-48f57bfdfd21"",
+                    ""path"": ""<Gamepad>/buttonEast"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
@@ -378,6 +510,15 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""HoldPunch"",
+                    ""type"": ""Button"",
+                    ""id"": ""3876c72e-1945-4ec6-afee-7139b21266c4"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -394,12 +535,56 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": """",
+                    ""id"": ""79d128d1-c5af-4877-9436-f9c077c7e5be"",
+                    ""path"": ""<Gamepad>/buttonSouth"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Press E"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
                     ""id"": ""2fb425d5-243f-4e1b-b5c7-f645bc6d5ddd"",
                     ""path"": ""<Keyboard>/escape"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
                     ""action"": ""Escape"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""b047accc-0ade-4bd4-a0b2-2e483b369c46"",
+                    ""path"": ""<Gamepad>/buttonEast"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Escape"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""9f636c7a-5879-4255-9714-23a083fd1647"",
+                    ""path"": ""<Keyboard>/e"",
+                    ""interactions"": ""Hold(duration=1,pressPoint=0.1)"",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""HoldPunch"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""ac0f3f17-ba98-4fc0-a78c-bc37954e4438"",
+                    ""path"": ""<Gamepad>/buttonSouth"",
+                    ""interactions"": ""Hold(duration=1,pressPoint=0.1)"",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""HoldPunch"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -442,8 +627,30 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": """",
+                    ""id"": ""23e15ef6-a246-4132-9e7d-13d91eda98d0"",
+                    ""path"": ""<Gamepad>/buttonSouth"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Activate"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
                     ""id"": ""2b34e254-fd85-4082-863c-d2495c2d0ecc"",
                     ""path"": ""<Keyboard>/escape"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Escape"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""ebdac02f-d988-43fa-ac35-f110a44217b3"",
+                    ""path"": ""<Gamepad>/buttonEast"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
@@ -542,6 +749,61 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
                     ""isPartOfComposite"": true
                 },
                 {
+                    ""name"": ""2D Vector"",
+                    ""id"": ""3ee9520c-f2da-4287-b088-f4b3a7a790af"",
+                    ""path"": ""2DVector"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Movement"",
+                    ""isComposite"": true,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""up"",
+                    ""id"": ""d73606cd-4981-48c7-8db7-677523343609"",
+                    ""path"": ""<Gamepad>/leftStick/up"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Movement"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""down"",
+                    ""id"": ""b0c34b73-54d8-45b8-a459-90f4a365e070"",
+                    ""path"": ""<Gamepad>/leftStick/down"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Movement"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""left"",
+                    ""id"": ""f6bbf1ad-ea3d-4904-b6a0-de9671684b54"",
+                    ""path"": ""<Gamepad>/leftStick/left"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Movement"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""right"",
+                    ""id"": ""768b5e20-d141-4e23-8210-8932d33cbb3a"",
+                    ""path"": ""<Gamepad>/leftStick/right"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Movement"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
                     ""name"": ""1D Axis"",
                     ""id"": ""45195279-5e35-4603-81a3-b9859ec5cde6"",
                     ""path"": ""1DAxis"",
@@ -575,9 +837,53 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
                     ""isPartOfComposite"": true
                 },
                 {
+                    ""name"": ""1D Axis"",
+                    ""id"": ""ce6a21d6-7b85-45f2-a90e-0d09a11c3b3d"",
+                    ""path"": ""1DAxis"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""LiftLower"",
+                    ""isComposite"": true,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""negative"",
+                    ""id"": ""2d7268ab-4392-4ea2-9ebb-b168445e4349"",
+                    ""path"": ""<Gamepad>/leftTrigger"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""LiftLower"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""positive"",
+                    ""id"": ""bf95fa38-1724-4f58-b2ab-16a09267aa65"",
+                    ""path"": ""<Gamepad>/rightTrigger"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""LiftLower"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
                     ""name"": """",
                     ""id"": ""0f6aa226-9137-43c8-a6b9-1e77f0474773"",
                     ""path"": ""<Keyboard>/escape"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Escape"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""cc1ecd66-ebb5-439f-9aea-d6cf2b89c270"",
+                    ""path"": ""<Gamepad>/buttonEast"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
@@ -604,6 +910,7 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
         m_InteractableZone = asset.FindActionMap("InteractableZone", throwIfNotFound: true);
         m_InteractableZone_PressE = m_InteractableZone.FindAction("Press E", throwIfNotFound: true);
         m_InteractableZone_Escape = m_InteractableZone.FindAction("Escape", throwIfNotFound: true);
+        m_InteractableZone_HoldPunch = m_InteractableZone.FindAction("HoldPunch", throwIfNotFound: true);
         // Laptop
         m_Laptop = asset.FindActionMap("Laptop", throwIfNotFound: true);
         m_Laptop_Activate = m_Laptop.FindAction("Activate", throwIfNotFound: true);
@@ -800,12 +1107,14 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
     private List<IInteractableZoneActions> m_InteractableZoneActionsCallbackInterfaces = new List<IInteractableZoneActions>();
     private readonly InputAction m_InteractableZone_PressE;
     private readonly InputAction m_InteractableZone_Escape;
+    private readonly InputAction m_InteractableZone_HoldPunch;
     public struct InteractableZoneActions
     {
         private @PlayerInputActions m_Wrapper;
         public InteractableZoneActions(@PlayerInputActions wrapper) { m_Wrapper = wrapper; }
         public InputAction @PressE => m_Wrapper.m_InteractableZone_PressE;
         public InputAction @Escape => m_Wrapper.m_InteractableZone_Escape;
+        public InputAction @HoldPunch => m_Wrapper.m_InteractableZone_HoldPunch;
         public InputActionMap Get() { return m_Wrapper.m_InteractableZone; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -821,6 +1130,9 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
             @Escape.started += instance.OnEscape;
             @Escape.performed += instance.OnEscape;
             @Escape.canceled += instance.OnEscape;
+            @HoldPunch.started += instance.OnHoldPunch;
+            @HoldPunch.performed += instance.OnHoldPunch;
+            @HoldPunch.canceled += instance.OnHoldPunch;
         }
 
         private void UnregisterCallbacks(IInteractableZoneActions instance)
@@ -831,6 +1143,9 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
             @Escape.started -= instance.OnEscape;
             @Escape.performed -= instance.OnEscape;
             @Escape.canceled -= instance.OnEscape;
+            @HoldPunch.started -= instance.OnHoldPunch;
+            @HoldPunch.performed -= instance.OnHoldPunch;
+            @HoldPunch.canceled -= instance.OnHoldPunch;
         }
 
         public void RemoveCallbacks(IInteractableZoneActions instance)
@@ -980,6 +1295,7 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
     {
         void OnPressE(InputAction.CallbackContext context);
         void OnEscape(InputAction.CallbackContext context);
+        void OnHoldPunch(InputAction.CallbackContext context);
     }
     public interface ILaptopActions
     {

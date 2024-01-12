@@ -22,8 +22,8 @@ namespace Game.Scripts.LiveObjects
 
         private void InteractableZone_onZoneInteractionComplete(InteractableZone zone)
         {
-            
-            if (_isReadyToBreak == false && _brakeOff.Count >0)
+
+            if (_isReadyToBreak == false && _brakeOff.Count > 0)
             {
                 _wholeCrate.SetActive(false);
                 _brokenCrate.SetActive(true);
@@ -37,7 +37,7 @@ namespace Game.Scripts.LiveObjects
                     BreakPart();
                     StartCoroutine(PunchDelay());
                 }
-                else if(_brakeOff.Count == 0)
+                else if (_brakeOff.Count == 0)
                 {
                     _isReadyToBreak = false;
                     _crateCollider.enabled = false;
@@ -50,17 +50,20 @@ namespace Game.Scripts.LiveObjects
         private void Start()
         {
             _brakeOff.AddRange(_pieces);
-            
+
         }
 
 
 
         public void BreakPart()
         {
-            int rng = Random.Range(0, _brakeOff.Count);
-            _brakeOff[rng].constraints = RigidbodyConstraints.None;
-            _brakeOff[rng].AddForce(new Vector3(1f, 1f, 1f), ForceMode.Force);
-            _brakeOff.Remove(_brakeOff[rng]);            
+            if (_brakeOff.Count > 0)
+            {
+                int rng = Random.Range(0, _brakeOff.Count);
+                _brakeOff[rng].constraints = RigidbodyConstraints.None;
+                _brakeOff[rng].AddForce(new Vector3(1f, 1f, 1f), ForceMode.Force);
+                _brakeOff.Remove(_brakeOff[rng]);
+            }
         }
 
         IEnumerator PunchDelay()

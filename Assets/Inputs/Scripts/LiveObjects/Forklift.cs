@@ -62,6 +62,7 @@ namespace Game.Scripts.LiveObjects
         private void ExitDriveMode()
         {
             _input.Player.Enable();
+            _input.Forklift.Disable();
             _inDriveMode = false;
             _forkliftCam.Priority = 9;
             _driverModel.SetActive(false);

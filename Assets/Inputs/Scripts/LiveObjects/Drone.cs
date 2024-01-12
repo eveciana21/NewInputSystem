@@ -79,6 +79,7 @@ namespace Game.Scripts.LiveObjects
         private void ExitFlightMode()
         {
             _playerInput.Player.Enable();
+            _playerInput.Drone.Disable();
             _droneCam.Priority = 9;
             _inFlightMode = false;
             UIManager.Instance.DroneView(false);
